@@ -1,0 +1,1036 @@
+<?xml version="1.0" ?>
+<robot name="mecanum_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find mecanum_robot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find mecanum_robot_description)/urdf/mecanum_robot.trans" />
+<xacro:include filename="$(find mecanum_robot_description)/urdf/mecanum_robot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="1.1663534961074897e-16 1.1663534961074897e-16 0.12" rpy="0 0 0"/>
+    <mass value="626.8153038620243"/>
+    <inertia ixx="34.21205" iyy="52.267949" izz="85.445173" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rr_wheel_body_1">
+  <inertial>
+    <origin xyz="1.1312574815625087e-05 0.0001733408960148397 2.351323560800811e-06" rpy="0 0 0"/>
+    <mass value="15.884472667137045"/>
+    <inertia ixx="0.080049" iyy="0.090199" izz="0.079944" ixy="4e-06" iyz="2e-06" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.373 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/rr_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.373 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/rr_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="fr_wheel_body_1">
+  <inertial>
+    <origin xyz="2.3519307399966216e-06 0.00017333973584671147 1.1313181994626609e-05" rpy="0 0 0"/>
+    <mass value="15.884472667137013"/>
+    <inertia ixx="0.079944" iyy="0.090199" izz="0.080049" ixy="2e-06" iyz="4e-06" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/fr_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/fr_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="fl_wheel_body_1">
+  <inertial>
+    <origin xyz="1.1313493589404366e-05 -0.00017333973584715556 -2.3513235607730554e-06" rpy="0 0 0"/>
+    <mass value="15.884472667137045"/>
+    <inertia ixx="0.080049" iyy="0.090199" izz="0.079944" ixy="-4e-06" iyz="2e-06" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/fl_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/fl_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bl_wheel_body_1">
+  <inertial>
+    <origin xyz="2.3510119655512085e-06 0.00017334089601545033 1.1313181994640487e-05" rpy="0 0 0"/>
+    <mass value="5.484554299514419"/>
+    <inertia ixx="0.027603" iyy="0.031144" izz="0.027639" ixy="1e-06" iyz="1e-06" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.373 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/bl_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.373 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/bl_wheel_body_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_2">
+  <inertial>
+    <origin xyz="-4.2866253802120724e-07 -2.0539125955565396e-15 -4.2866253369133744e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="-6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.443004 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.443004 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_1">
+  <inertial>
+    <origin xyz="-1.572875303335053e-07 1.5728752089660958e-07 -8.326672684688674e-17" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="8.4e-05" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373283 0.471283 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373283 0.471283 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_8">
+  <inertial>
+    <origin xyz="4.28662526918977e-07 -4.107825191113079e-15 -4.286625290561563e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.302996 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.302996 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_7">
+  <inertial>
+    <origin xyz="6.38378239159465e-15 -3.1086244689504383e-15 2.914335439641036e-15" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="0.0" iyz="8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.274 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.274 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_6">
+  <inertial>
+    <origin xyz="4.286625237548414e-07 1.1657341758564144e-15 4.2866253131823573e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.302996 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.302996 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_5">
+  <inertial>
+    <origin xyz="-6.2727600891321345e-15 4.274358644806853e-15 -2.0122792321330962e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="-8.4e-05" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373 0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373 0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_4">
+  <inertial>
+    <origin xyz="-4.2866253802120724e-07 3.7192471324942744e-15 4.2866253346235395e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="-6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.443004 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.443004 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_3">
+  <inertial>
+    <origin xyz="6.439293542825908e-15 3.3306690738754696e-16 -2.7755575615628914e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="0.0" iyz="-8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.472 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.472 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_30">
+  <inertial>
+    <origin xyz="-4.2866253685547306e-07 4.107825191113079e-15 -4.2866253516238295e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.443004 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_30.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.443004 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_30.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_29">
+  <inertial>
+    <origin xyz="7.105427357601002e-15 -1.5728752583710204e-07 1.572875249766792e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="-0.0" iyz="8.4e-05" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.472 -0.471283 -0.119717" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_29.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.472 -0.471283 -0.119717" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_29.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_31">
+  <inertial>
+    <origin xyz="-4.496403249731884e-15 6.217248937900877e-15 1.942890293094024e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="-8.4e-05" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373 -0.471 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_31.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373 -0.471 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_31.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_28">
+  <inertial>
+    <origin xyz="-4.28662539408986e-07 -1.4432899320127035e-15 4.286625323937643e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.443004 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_28.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.443004 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_28.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_27">
+  <inertial>
+    <origin xyz="-6.716849298982197e-15 -3.164135620181696e-15 -3.434752482434078e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="8.4e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.373 -0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_27.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.373 -0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_27.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_26">
+  <inertial>
+    <origin xyz="4.286625241989306e-07 -1.609823385706477e-15 4.286625311170078e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="-6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.302996 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_26.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.302996 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_26.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_25">
+  <inertial>
+    <origin xyz="6.827871601444713e-15 6.661338147750939e-16 1.2073675392798577e-15" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="-0.0" iyz="-8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.274 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_25.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.274 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_25.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_32">
+  <inertial>
+    <origin xyz="4.286625271410216e-07 4.107825191113079e-15 -4.286625283900225e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="-6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.302996 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_32.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.302996 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_32.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_22">
+  <inertial>
+    <origin xyz="6.716849298982197e-15 -2.7755575615628914e-15 2.733924198139448e-15" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="-0.0" iyz="8.4e-05" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.472 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_22.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.472 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_22.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_23">
+  <inertial>
+    <origin xyz="4.2866252686346584e-07 -4.274358644806853e-15 -4.2866252900064516e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.443004 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_23.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.443004 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_23.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_24">
+  <inertial>
+    <origin xyz="-1.5728752977839378e-07 1.5728752061905382e-07 8.326672684688674e-17" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="8.4e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.372717 -0.470717 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_24.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.372717 -0.470717 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_24.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_17">
+  <inertial>
+    <origin xyz="-4.2866253802120724e-07 -1.8318679906315083e-15 -4.2866253369133744e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="-6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.302996 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_17.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.302996 -0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_17.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_18">
+  <inertial>
+    <origin xyz="7.049916206369744e-15 1.6653345369377348e-16 -7.077671781985373e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="-0.0" iyz="-8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.274 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_18.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.274 -0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_18.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_19">
+  <inertial>
+    <origin xyz="-4.286625378546738e-07 3.3306690738754696e-15 4.286625332750038e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="-6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.302996 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_19.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.302996 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_19.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_20">
+  <inertial>
+    <origin xyz="-5.88418203051333e-15 4.385380947269368e-15 -4.85722573273506e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="-8.4e-05" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.373 -0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_20.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.373 -0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_20.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_21">
+  <inertial>
+    <origin xyz="4.286625241989306e-07 1.1657341758564144e-15 4.286625314708914e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.443004 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.443004 -0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_11">
+  <inertial>
+    <origin xyz="7.049916206369744e-15 -1.1657341758564144e-15 -1.8457457784393227e-15" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="0.0" iyz="-8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.472 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.472 0.471 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_12">
+  <inertial>
+    <origin xyz="4.2866252697448815e-07 -2.942091015256665e-15 4.286625285218615e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="-6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.443004 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.443004 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_13">
+  <inertial>
+    <origin xyz="-4.385380947269368e-15 -5.2735593669694936e-15 -2.0122792321330962e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="8.4e-05" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.373 0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_13.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.373 0.471 -0.021" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_13.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_14">
+  <inertial>
+    <origin xyz="-4.286625372995623e-07 -3.219646771412954e-15 4.286625337399097e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="6e-05" iyz="6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.302996 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_14.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.302996 0.471 -0.049996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_14.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_10">
+  <inertial>
+    <origin xyz="4.2866252492057555e-07 2.6645352591003757e-15 -4.286625306937353e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="-6e-05" ixz="-4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.443004 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_10.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.443004 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_10.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_9">
+  <inertial>
+    <origin xyz="-5.662137425588298e-15 4.274358644806853e-15 -4.718447854656915e-16" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000161" iyy="0.000161" izz="0.000245" ixy="-8.4e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.373 0.471 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_9.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.373 0.471 -0.219" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_9.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_16">
+  <inertial>
+    <origin xyz="-4.2866253802120724e-07 2.3314683517128287e-15 -4.2866253346929284e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000203" iyy="0.000161" izz="0.000203" ixy="-6e-05" iyz="6e-05" ixz="4.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.302996 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_16.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.302996 0.471 -0.190004" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_16.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roller_15">
+  <inertial>
+    <origin xyz="7.494005416219807e-15 1.5728752422727865e-07 -1.5728752443544547e-07" rpy="0 0 0"/>
+    <mass value="0.20683112740471188"/>
+    <inertia ixx="0.000245" iyy="0.000161" izz="0.000161" ixy="-0.0" iyz="8.4e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.274 0.471283 -0.120283" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_15.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.274 0.471283 -0.120283" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find mecanum_robot_description)/meshes/roller_15.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 1" type="continuous">
+  <origin xyz="-0.373 -0.471 0.12" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="rr_wheel_body_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 2" type="continuous">
+  <origin xyz="0.373 -0.471 0.12" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="fr_wheel_body_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 3" type="continuous">
+  <origin xyz="0.373 0.471 0.12" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="fl_wheel_body_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 4" type="continuous">
+  <origin xyz="-0.373 0.471 0.12" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="bl_wheel_body_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Revolute 13" type="continuous">
+  <origin xyz="0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_2"/>
+  <axis xyz="0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 14" type="continuous">
+  <origin xyz="0.000283 -0.000283 0.099" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_1"/>
+  <axis xyz="-0.707107 0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 15" type="continuous">
+  <origin xyz="-0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_8"/>
+  <axis xyz="0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 16" type="continuous">
+  <origin xyz="-0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_7"/>
+  <axis xyz="-0.0 -0.707107 0.707107"/>
+</joint>
+
+<joint name="Revolute 17" type="continuous">
+  <origin xyz="-0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_6"/>
+  <axis xyz="-0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 18" type="continuous">
+  <origin xyz="0.0 0.0 -0.099" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_5"/>
+  <axis xyz="-0.707107 -0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 19" type="continuous">
+  <origin xyz="0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_4"/>
+  <axis xyz="-0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 20" type="continuous">
+  <origin xyz="0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="fr_wheel_body_1"/>
+  <child link="roller_3"/>
+  <axis xyz="-0.0 -0.707107 -0.707107"/>
+</joint>
+
+<joint name="Revolute 21" type="continuous">
+  <origin xyz="0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_30"/>
+  <axis xyz="-0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 22" type="continuous">
+  <origin xyz="0.099 0.000283 -0.000283" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_29"/>
+  <axis xyz="-0.0 0.707107 -0.707107"/>
+</joint>
+
+<joint name="Revolute 23" type="continuous">
+  <origin xyz="0.0 0.0 0.099" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_31"/>
+  <axis xyz="-0.707107 -0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 24" type="continuous">
+  <origin xyz="0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_28"/>
+  <axis xyz="0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 25" type="continuous">
+  <origin xyz="0.0 0.0 -0.099" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_27"/>
+  <axis xyz="0.707107 -0.707107 -0.0"/>
+</joint>
+
+<joint name="Revolute 26" type="continuous">
+  <origin xyz="-0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_26"/>
+  <axis xyz="0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 27" type="continuous">
+  <origin xyz="-0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_25"/>
+  <axis xyz="-0.0 -0.707107 -0.707107"/>
+</joint>
+
+<joint name="Revolute 28" type="continuous">
+  <origin xyz="-0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="fl_wheel_body_1"/>
+  <child link="roller_32"/>
+  <axis xyz="-0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 29" type="continuous">
+  <origin xyz="-0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_22"/>
+  <axis xyz="0.0 -0.707107 0.707107"/>
+</joint>
+
+<joint name="Revolute 30" type="continuous">
+  <origin xyz="-0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_23"/>
+  <axis xyz="0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 31" type="continuous">
+  <origin xyz="0.000283 -0.000283 0.099" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_24"/>
+  <axis xyz="-0.707107 0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 32" type="continuous">
+  <origin xyz="0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_17"/>
+  <axis xyz="0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 33" type="continuous">
+  <origin xyz="0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_18"/>
+  <axis xyz="-0.0 -0.707107 -0.707107"/>
+</joint>
+
+<joint name="Revolute 34" type="continuous">
+  <origin xyz="0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_19"/>
+  <axis xyz="-0.5 -0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 35" type="continuous">
+  <origin xyz="0.0 0.0 -0.099" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_20"/>
+  <axis xyz="-0.707107 -0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 36" type="continuous">
+  <origin xyz="-0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="bl_wheel_body_1"/>
+  <child link="roller_21"/>
+  <axis xyz="-0.5 -0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 37" type="continuous">
+  <origin xyz="-0.099 0.0 0.0" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_11"/>
+  <axis xyz="-0.0 0.707107 0.707107"/>
+</joint>
+
+<joint name="Revolute 38" type="continuous">
+  <origin xyz="-0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_12"/>
+  <axis xyz="-0.5 0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 39" type="continuous">
+  <origin xyz="0.0 0.0 -0.099" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_13"/>
+  <axis xyz="-0.707107 0.707107 -0.0"/>
+</joint>
+
+<joint name="Revolute 40" type="continuous">
+  <origin xyz="0.070004 0.0 -0.070004" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_14"/>
+  <axis xyz="-0.5 0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 42" type="continuous">
+  <origin xyz="-0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_10"/>
+  <axis xyz="0.5 0.707107 0.5"/>
+</joint>
+
+<joint name="Revolute 44" type="continuous">
+  <origin xyz="0.0 0.0 0.099" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_9"/>
+  <axis xyz="0.707107 0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 45" type="continuous">
+  <origin xyz="0.070004 0.0 0.070004" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_16"/>
+  <axis xyz="0.5 0.707107 -0.5"/>
+</joint>
+
+<joint name="Revolute 46" type="continuous">
+  <origin xyz="0.099 -0.000283 0.000283" rpy="0 0 0"/>
+  <parent link="rr_wheel_body_1"/>
+  <child link="roller_15"/>
+  <axis xyz="-0.0 -0.707107 0.707107"/>
+</joint>
+
+</robot>
