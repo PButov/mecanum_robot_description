@@ -4,8 +4,22 @@
 <xacro:property name="body_color" value="Gazebo/Silver" />
 
 <gazebo>
-  <plugin name="control" filename="libgazebo_ros_control.so"/>
+  <plugin
+    filename="gz-sim-mecanum-drive-system"
+    name="gz::sim::systems::MecanumDrive">
+    <front_left_joint>Revolute 3</front_left_joint>
+    <front_right_joint>Revolute 2</front_right_joint>
+    <back_left_joint>Revolute 4</back_left_joint>
+    <back_right_joint>Revolute 1</back_right_joint>
+    <wheel_separation>1.25</wheel_separation>
+    <wheelbase>1.511</wheelbase>
+    <wheel_radius>0.3</wheel_radius>
+    <min_acceleration>-5</min_acceleration>
+    <max_acceleration>5</max_acceleration>
+    <topic>cmd_vel</topic>
+  </plugin>
 </gazebo>
+
 <gazebo reference="base_link">
   <material>${body_color}</material>
   <mu1>0.2</mu1>

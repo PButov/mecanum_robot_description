@@ -31,43 +31,53 @@ def generate_launch_description():
         name='joint_state_publisher'
     )
 
-    gazebo_server = IncludeLaunchDescription(
+    gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
-                FindPackageShare('gazebo_ros'),
+                FindPackageShare('ros_gz_sim'),
                 'launch',
-                'gzserver.launch.py'
+                'gz_sim.launch.py'
             ])
         ]),
         launch_arguments={
-            'pause': 'true'
+            'gz_args': '-r empty.sdf',
+            'gz_version': '7'
         }.items()
     )
 
-    gazebo_client = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            PathJoinSubstitution([
-                FindPackageShare('gazebo_ros'),
-                'launch',
-                'gzclient.launch.py'
-            ])
-        ])
-    )
+    #rviz_node = Node(
+    #    package='rviz2',
+    #    executable='rviz2',
+    #    name='rviz2',
+    #    arguments=['-d', rviz_config_file],
+    #    output='screen'
+    #)
 
     urdf_spawn_node = Node(
-        package='gazebo_ros',
-        executable='spawn_entity.py',
+        package='ros_gz_sim',
+        executable='create',
         arguments=[
-            '-entity', 'mecanum_robot',
+            '-entity', 'simple_robot_v2',
             '-topic', 'robot_description'
         ],
+        output='screen'
+    )
+
+    gz_ros_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
+        ],
+        remappings=[('/cmd_vel', '/cmd_vel')],
         output='screen'
     )
 
     return LaunchDescription([
         robot_state_publisher_node,
         joint_state_publisher_node,
-        gazebo_server,
-        gazebo_client,
         urdf_spawn_node,
+        gazebo_node,
+        gz_ros_bridge,
+        #rviz_node
     ])
